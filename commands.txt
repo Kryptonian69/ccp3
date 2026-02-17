@@ -1,0 +1,22 @@
+# Practical 3: REST API Testing Commands
+
+# 1. GET All Items
+curl http://127.0.0.1:5000/items
+
+# 2. GET Specific Item (ID: 1)
+curl http://127.0.0.1:5000/items/1
+
+# 3. POST - Add New Item (CMD Version)
+curl -X POST http://127.0.0.1:5000/items -H "Content-Type: application/json" -d "{\"name\": \"new item\"}"
+
+# 3. POST - Add New Item (PowerShell Version)
+# Note: PowerShell needs triple quotes for curl.exe or use Invoke-RestMethod
+curl.exe -X POST http://127.0.0.1:5000/items -H "Content-Type: application/json" -d '{\"\"\"name\"\"\": \"\"\"new item\"\"\"}'
+
+# 3. POST - Add New Item (Native PowerShell - BEST WAY)
+Invoke-RestMethod -Uri "http://127.0.0.1:5000/items" -Method Post -Body '{"name": "new item"}' -ContentType "application/json"
+
+# JSON Payload for POST:
+{
+    "name": "new item"
+}
